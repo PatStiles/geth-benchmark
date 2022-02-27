@@ -43,6 +43,6 @@ for i in range(params.nGeth):
     GethNode.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD";
 
     # Install and execute scripts on the node. THIS TAR FILE DOES NOT ACTUALLY EXIST!
-    GethNode.addService(rspec.Execute(shell="bash", command="/local/repository/gEth.sh"))
+    GethNode.addService(rspec.Execute(shell="bash", command="/users/pdstiles/gEth.sh"))
 
 portal.context.printRequestRSpec()
