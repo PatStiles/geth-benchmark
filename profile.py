@@ -32,17 +32,17 @@ Nodes = []
 for i in range(params.nGeth):
     # Add a raw PC to the request.
     GethNode = request.RawPC("Geth" + str(i))
-    Nodes.append(DataPodsNode)
-    iface = DataPodsNode.addInterface("if" + str(i))
+    Nodes.append(GethNode)
+    iface = GethNode.addInterface("if" + str(i))
 
     # Specify the component id and the IPv4 address
     iface.component_id = "Geth" + str(i)
     iface.addAddress(rspec.IPv4Address("192.172.1." + str(i), "255.255.255.0")) 
 
     # Request that a specific image be installed on this node
-    DataPodsNode.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD";
+    GethNode.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD";
 
     # Install and execute scripts on the node. THIS TAR FILE DOES NOT ACTUALLY EXIST!
-    DataPodsNode.addService(rspec.Execute(shell="bash", command="/local/repository/gEth.sh"))
+    GethNode.addService(rspec.Execute(shell="bash", command="/local/repository/gEth.sh"))
 
 portal.context.printRequestRSpec()
